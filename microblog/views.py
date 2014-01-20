@@ -85,7 +85,7 @@ def LoginView(request):
                 login(request, user)
                 request.session.set_expiry(360000)
                 messages.success(request, 'Welcome to microblog')
-                return redirect('/microblog/u/%s' % (username) )
+                return redirect('/microblog/u/%s' % (username))
             else:
                  messages.error(request, 'Please check your password')
                  return redirect('login.html')
@@ -93,14 +93,10 @@ def LoginView(request):
             messages.error(request, 'User doesn\'t exist')
             return redirect('login.html')
 
-        #except:
-        #    messages.error(request, 'Login failure')
-        #    return render(request, 'index.html')
 
 @login_required()
 def LogoutView(request):
     logout(request)
     messages.success(request, 'Logout successfully.')
-    #return render(request, 'index.html')
     return redirect('/microblog/')
 

@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Microblog - powered by Django </title>
+  <title> Microblog - powered by Django </title>
   <!--Bootstrap core CSS -->
   <link href="/static/css/bootstrap.css" rel="stylesheet">
   <!--Custom styles for this template -->
   <link href="/static/css/style.css" rel='stylesheet'>
   
-  {% if not user.is_authenticated %}
-  <title> {{title}} - Microblog </title>
-  {% else %}
-  <title> {{title}} - {{user.name}} </title>
-  {% endif %}
 </head>
 <body>
   <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
@@ -44,7 +39,7 @@
               <div class="alert alert-danger">{{ message.message }}</div>
             {% else %}
               <div class="alert alert-success">{{ message.message }}</div>
-  `         {% endif %}
+            {% endif %}
         {% endfor %}
     {% endif %}  
   {% block content %}{% endblock %}
