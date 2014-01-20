@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <form method="post" class="form-horizontal">
+    {% csrf_token %}
+    <fieldset>
+      <div class="control-group">
+        <label for="username" class="control-label">User Name</label>
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge">
+          <p class="help-block">Your name is used to login and display</p>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label for="password" class="control-label">Password</label>
+        <div class="controls">
+          <input type="password" id="password" name="password" class="input-xlarge">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label for="password-repeat" class="control-label">Password repeat</label>
+        <div class="controls">
+          <input type="password" id="password-repeat" name="password-repeat" class="input-xlarge">
+        </div>
+      </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

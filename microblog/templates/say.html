@@ -1,0 +1,10 @@
+<div class="jumbotron hero-unit">
+  <form method="post" style="text-align:left;" class="form-inline">
+    {% csrf_token %}
+    <input type='text' class='col-md-12' name='post'>
+    <p>
+    <button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i><span> post</span></button>
+    <input type="hidden" name="next" value="{{ next }}" />
+    </p>
+  </form>
+</div>

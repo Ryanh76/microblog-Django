@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% if not user.is_authenticated %}
+  <div class="jumbotron hero-unit">
+    <h1>Welcome to Microblog</h1>
+    <p>Microblog is powered by django</p>
+    <p>
+        <a href="{% url "login" %}" class="btn btn-primary btn-large">Login</a>
+        <a href="{% url "reg" %}" class="btn btn-primary btn-large">Register</a>
+    </p>
+  </div>
+
+{% else %}
+  <div class="container">
+    <div class="row">
+      {% include "say.html" %}
+
+    </div>
+  </div>
+{% endif %}
+{% include "posts.html" %}
+
+{% endblock %}
+

@@ -1,0 +1,10 @@
+{% for post in all_post %}
+    <div class="row col-md-4">
+      <h2>{{post.user}}</h2>
+      <h4> {{post.post}}</h4>
+      <p><small> {{post.time}}</small></p>
+    </div>
+
+  {% empty %}
+  <h5>create something interesting </h5>
+{% endfor %}

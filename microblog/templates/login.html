@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <form method="post" class="form-horizontal">
+    {% csrf_token %}
+    <fieldset><h2>請輸入帳號與密碼登入Microblog</h2>
+      <div id="user_group" class="control-group">
+        <label for="username" class="control-label">User Name</label>
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge">
+          <span id="user_error" class="invisible help-inline">User doesn't exist!</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="password" class="control-label">Password</label>
+        <div class="controls"><input type="password" id="password" name="password" class="input-xlarge">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" id="btn_login" class="btn btn-primary">Login</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

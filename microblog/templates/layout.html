@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Microblog - powered by Django </title>
+  <!--Bootstrap core CSS -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <!--Custom styles for this template -->
+  <link href="/static/css/style.css" rel='stylesheet'>
+  
+  {% if not user.is_authenticated %}
+  <title> {{title}} - Microblog </title>
+  {% else %}
+  <title> {{title}} - {{user.name}} </title>
+  {% endif %}
+</head>
+<body>
+  <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target="#navbar-collapse1" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+        <a href="{% url "index" %}" class="navbar-brand">Microblog </a>
+      </div>
+      <div id="navbar-collapse1" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          {% if not user.is_authenticated %}
+            <li><a href="{% url "login" %}"> Login </a></li>
+            <li><a href="{% url "reg" %}"> Register </a></li>
+          {% else %}
+          <li><a href={% url "logout" %}> Logout </a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class='container'>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+              <div class="alert alert-danger">{{ message.message }}</div>
+            {% else %}
+              <div class="alert alert-success">{{ message.message }}</div>
+  `         {% endif %}
+        {% endfor %}
+    {% endif %}  
+  {% block content %}{% endblock %}
+  </div>
+  <footer>
+  <hr>
+  <p> 2014 </p></footer>
+</div>
+</body>  
+<!--Bootstrap core JavaScript-->
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="/static/js/jquery-1.10.2.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+</html>
